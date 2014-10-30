@@ -78,9 +78,13 @@ class MyApp:
 
 circle = drawpad.create_oval(20, 20, 100, 100, fill='green')
 circle2 = drawpad.create_oval(120, 120, 200, 200, fill='green')
-direction = 5
+circle3 = drawpad.create_oval(220, 220, 300, 300, fill='green')
+direction = 3
+direction1 = -3
 
-def animate2():
+
+
+def animate():
     global direction
     # Get the x and y co-ordinates of the circle
     x1, y1, x2, y2 = drawpad.coords(circle)
@@ -88,24 +92,34 @@ def animate2():
     drawpad.move(circle,direction,0)
     if x2 > 800: 
         drawpad.move(circle,-800,0)
-        direction = 5
 
     drawpad.after(1, animate)
 
 
 
-def animate():
+def animate2():
     global direction
     # Get the x and y co-ordinates of the circle
     x1, y1, x2, y2 = drawpad.coords(circle2)
 
-    drawpad.move(circle2,direction,0)
+    drawpad.move(circle2,direction1,0)
+    if x2 < 0: 
+        drawpad.move(circle2,800,0)
+
+    drawpad.after(1, animate2)
+
+
+
+def animate3():
+    global direction
+    # Get the x and y co-ordinates of the circle
+    x1, y1, x2, y2 = drawpad.coords(circle3)
+
+    drawpad.move(circle3,direction,0)
     if x2 > 800: 
-        drawpad.move(circle2,-800,0)
-        direction = 5
+        drawpad.move(circle3,-800,0)
 
-    drawpad.after(1, animate)
-
+    drawpad.after(1, animate3)
 
 
 
@@ -118,6 +132,7 @@ def animate():
 
 
 
+animate3()
 animate2()
 animate()		
 app = MyApp(root)
